@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chimingo Barbershop · Vista previa</title>
+<meta name="description" content="Chimingo Barbershop, Alma Rosa, Santo Domingo Este. Vista previa por Nova Sites Studio.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+/* Concepto: el poste de barbero como motivo (franjas diagonales rojo/blanco/azul),
+   fondo casi negro cálido, tipografía condensada grande. Página básica de una sola pantalla larga. */
+:root{
+  --bg:#141210; --panel:#1c1916; --line:#34302a; --fg:#f2ece2; --muted:#a59c8e;
+  --red:#d2382c; --blue:#2f5fa8; --brass:#c9a35a;
+  --display:"Anton","Impact","Arial Narrow",sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{width:100%;max-width:1080px;margin-inline:auto;padding-inline:clamp(16px,5vw,32px)}
+
+/* Aviso de demostración */
+.demo{background:var(--brass);color:#1a150c;text-align:center;font-size:13px;font-weight:500;padding:8px 16px}
+
+/* Franja del poste de barbero */
+.pole{height:10px;background:repeating-linear-gradient(-45deg,var(--red) 0 14px,var(--fg) 14px 28px,var(--blue) 28px 42px,var(--fg) 42px 56px);background-size:79px 10px;animation:pole 2.4s linear infinite}
+@keyframes pole{to{background-position:79px 0}}
+
+/* Navegación */
+.nav{position:sticky;top:0;z-index:20;background:rgba(20,18,16,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{font-family:var(--display);font-size:26px;letter-spacing:.04em;text-decoration:none;text-transform:uppercase}
+.logo span{color:var(--red)}
+.logo{white-space:nowrap}
+@media (max-width:520px){.logo{font-size:18px}}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:14px;color:var(--muted);transition:color .2s}
+.nav ul a:hover{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px var(--red)}
+.btn-line{background:none;color:var(--fg);border:1px solid var(--line)}
+.btn-line:hover{border-color:var(--fg)}
+.btn svg{width:20px;height:20px;fill:currentColor}
+
+/* Portada */
+.hero-bg{background:linear-gradient(90deg,rgba(20,18,16,.97) 0%,rgba(20,18,16,.86) 45%,rgba(20,18,16,.5) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 25%),url(images/local.jpg) center 45%/cover no-repeat}
+.hero{padding-block:clamp(56px,10vw,120px) clamp(56px,8vw,96px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:40px;align-items:end}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(52px,8.4vw,108px);line-height:.88;letter-spacing:.01em;text-transform:uppercase;margin:18px 0 0}
+.hero h1 .l{display:block;overflow:hidden}
+.hero h1 .l span{display:inline-block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 .l:nth-child(2) span{animation-delay:.12s;color:var(--red)}
+.hero h1 .l:nth-child(3) span{animation-delay:.24s;-webkit-text-stroke:1.5px var(--fg);color:transparent}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.lead{color:var(--muted);font-size:18px;max-width:44ch;margin:24px 0 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.card-hours{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}
+.card-hours h2{font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.04em;text-transform:uppercase;margin:0 0 12px}
+.open{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;background:#1f3a26;color:#8fe0a3;margin-bottom:14px}
+.open.closed{background:#3a1f1f;color:#f0a19a}
+.open i{width:8px;height:8px;border-radius:50%;background:currentColor}
+.hours{list-style:none;margin:0;padding:0;font-size:15px}
+.hours li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-variant-numeric:tabular-nums}
+.hours li:last-child{border:0}
+.hours li.today{color:var(--brass);font-weight:700}
+
+/* Secciones */
+.section{padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--line)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.head h2{font-family:var(--display);font-weight:400;font-size:clamp(44px,7vw,80px);line-height:.95;text-transform:uppercase;margin:0}
+.head p{color:var(--muted);max-width:38ch;margin:0}
+
+/* Servicios */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.svc{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 16px;padding:20px 0;border-bottom:1px solid var(--line);transition:padding .3s}
+.svc:hover{padding-left:10px}
+.svc h3{margin:0;font-size:19px;font-weight:700}
+.svc p{margin:0;color:var(--muted);font-size:14px;grid-column:1}
+.price{font-family:var(--display);font-size:26px;color:var(--brass);grid-row:1/3;grid-column:2;align-self:center;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--body);font-size:12px;color:var(--muted);margin-right:4px}
+
+/* Galería */
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ph{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;transition:transform .4s}
+.ph{margin:0}
+.ph:nth-child(even){margin-top:28px}
+.js .ph.reveal.in:hover,.ph:hover{transform:translateY(-4px)}
+.ph::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent 0 22px,rgba(255,255,255,.025) 22px 44px)}
+.ph svg{width:56px;height:56px;stroke:var(--muted);fill:none;stroke-width:1.5;position:relative}
+.ph figcaption{position:absolute;left:14px;bottom:12px;font-size:13px;color:var(--muted)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.ph:hover img{transform:scale(1.06)}
+.ph::after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(transparent,rgba(20,18,16,.9))}
+.ph figcaption{z-index:1;color:var(--fg)!important;font-weight:500}
+
+/* Visítanos */
+.visit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px}
+.box h3{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.04em;text-transform:uppercase;margin:0 0 10px;color:var(--brass)}
+.box p{margin:0;color:var(--muted)}
+.box a{color:var(--fg);font-weight:700}
+
+/* Pie */
+.cta{text-align:center}
+.cta h2{font-family:var(--display);font-weight:400;font-size:clamp(48px,9vw,110px);line-height:.9;text-transform:uppercase;margin:0 0 28px}
+.cta h2 span{color:var(--red)}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:13px}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* Botón flotante */
+.float{position:fixed;right:18px;bottom:18px;z-index:30;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.6);border:0;cursor:pointer;transition:transform .2s}
+.float:hover{transform:scale(1.07)}
+.float svg{width:30px;height:30px;fill:#fff}
+
+/* Aviso */
+.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--fg);color:var(--bg);padding:12px 18px;border-radius:12px;font-size:14px;font-weight:500;max-width:calc(100% - 32px);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:40}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Aparecer al bajar */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:820px){
+  .hero-bg{background:linear-gradient(0deg,var(--bg) 0%,rgba(20,18,16,.82) 40%,rgba(20,18,16,.7) 100%),url(images/local.jpg) center 30%/cover no-repeat}
+  .ph:nth-child(even){margin-top:0}
+  .nav ul{display:none}
+  .hero{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .visit{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+
+<div class="demo">Vista previa preparada para Chimingo Barbershop · Nova Sites Studio</div>
+<div class="pole" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#inicio" class="logo">Chimingo <span>Barbershop</span></a>
+    <ul>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#trabajos">Trabajos</a></li>
+      <li><a href="#visitanos">Visítanos</a></li>
+    </ul>
+    <button class="btn btn-red" type="button" data-wa style="min-height:40px;padding:0 18px;font-size:14px">Reservar</button>
+  </div>
+</header>
+
+<main>
+<div class="hero-bg">
+<section class="wrap hero" id="inicio">
+  <div>
+    <p class="kicker">Alma Rosa · Santo Domingo Este</p>
+    <h1><span class="l"><span>El corte</span></span><span class="l"><span>que te</span></span><span class="l"><span>mereces.</span></span></h1>
+    <p class="lead">Cortes clásicos y modernos, degradados y barba, con buena música y mejor ambiente. Escríbenos y te guardamos tu turno.</p>
+    <div class="actions">
+      <button class="btn btn-red" type="button" data-wa>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg>
+        Reservar por WhatsApp
+      </button>
+      <a class="btn btn-line" href="#servicios">Ver precios</a>
+    </div>
+  </div>
+  <aside class="card-hours" aria-labelledby="hTitle">
+    <h2 id="hTitle">Horario</h2>
+    <span class="open" id="openNow"><i></i><span>Abierto ahora</span></span>
+    <ul class="hours" id="hours">
+      <li data-d="1"><span>Lunes</span><span>8:00 am – 8:30 pm</span></li>
+      <li data-d="2"><span>Martes</span><span>Cerrado</span></li>
+      <li data-d="3"><span>Miércoles</span><span>8:00 am – 8:30 pm</span></li>
+      <li data-d="4"><span>Jueves</span><span>8:00 am – 8:30 pm</span></li>
+      <li data-d="5"><span>Viernes</span><span>8:00 am – 8:30 pm</span></li>
+      <li data-d="6"><span>Sábado</span><span>8:00 am – 8:30 pm</span></li>
+      <li data-d="0"><span>Domingo</span><span>8:00 am – 8:30 pm</span></li>
+    </ul>
+  </aside>
+</section>
+</div>
+
+<section class="section" id="servicios">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2>Servicios<br>y precios</h2>
+      <p>Precios de ejemplo en pesos dominicanos: se ajustan con los precios reales de la barbería.</p>
+    </div>
+    <div class="services reveal">
+      <div class="svc"><h3>Corte clásico</h3><p>Tijera y máquina, con lavado</p><span class="price"><small>RD$</small>400</span></div>
+      <div class="svc"><h3>Degradado (fade)</h3><p>Bajo, medio o alto, con navaja</p><span class="price"><small>RD$</small>450</span></div>
+      <div class="svc"><h3>Corte + barba</h3><p>El combo completo</p><span class="price"><small>RD$</small>600</span></div>
+      <div class="svc"><h3>Perfilado de barba</h3><p>Diseño y contorno con navaja</p><span class="price"><small>RD$</small>250</span></div>
+      <div class="svc"><h3>Afeitado con toalla caliente</h3><p>Afeitado clásico y relajante</p><span class="price"><small>RD$</small>350</span></div>
+      <div class="svc"><h3>Corte de niño</h3><p>Hasta 12 años</p><span class="price"><small>RD$</small>300</span></div>
+      <div class="svc"><h3>Mascarilla negra</h3><p>Limpieza facial para puntos negros</p><span class="price"><small>RD$</small>200</span></div>
+      <div class="svc"><h3>Cejas</h3><p>Perfilado con navaja</p><span class="price"><small>RD$</small>100</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="trabajos">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2>Nuestros<br>trabajos</h2>
+      <p>Fotos de ejemplo: aquí van los cortes reales de Chimingo.</p>
+    </div>
+    <div class="gallery">
+      <figure class="ph reveal"><img src="images/degradado.jpg" alt="Degradado bajo hecho con máquina" loading="lazy" width="900" height="1352"><figcaption>Degradado</figcaption></figure>
+      <figure class="ph reveal"><img src="images/corte-clasico.jpg" alt="Barbero haciendo un corte clásico con máquina" loading="lazy" width="900" height="1350"><figcaption>Corte clásico</figcaption></figure>
+      <figure class="ph reveal"><img src="images/barba.jpg" alt="Perfilado de barba con tijera y peine" loading="lazy" width="900" height="1350"><figcaption>Perfilado de barba</figcaption></figure>
+      <figure class="ph reveal"><img src="images/afeitado.jpg" alt="Afeitado de barba con navaja" loading="lazy" width="900" height="1200"><figcaption>Afeitado con navaja</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="visitanos">
+  <div class="wrap">
+    <div class="head reveal"><h2>Visítanos</h2></div>
+    <div class="visit">
+      <div class="box reveal"><h3>Dirección</h3><p>C. Costa Rica 188, Alma Rosa<br>Santo Domingo Este<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Chimingo+Barbershop+Calle+Costa+Rica+188+Alma+Rosa+Santo+Domingo+Este" target="_blank" rel="noopener">Cómo llegar</a></p></div>
+      <div class="box reveal"><h3>WhatsApp</h3><p>829-872-7372<br><a href="#visitanos" data-wa>Escribir ahora</a></p></div>
+      <div class="box reveal"><h3>4.9 ★ en Google</h3><p>Lo que más destacan los clientes: el ambiente, la música y el buen trato.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta">
+  <div class="wrap reveal">
+    <h2>¿Te toca<br><span>recortarte?</span></h2>
+    <button class="btn btn-red" type="button" data-wa>Reservar mi turno</button>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="y">2026</span> Chimingo Barbershop</span>
+    <span>Vista previa por Nova Sites Studio</span>
+  </div>
+</footer>
+
+<button class="float" type="button" data-wa aria-label="Reservar por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg>
+</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  document.documentElement.classList.add("js");
+  const toast = document.getElementById("toast");
+  let t;
+  const show = (msg) => { toast.textContent = msg; toast.classList.add("show"); clearTimeout(t); t = setTimeout(() => toast.classList.remove("show"), 3200); };
+
+  // Es una demo: los botones explican lo que harían en la página real
+  document.querySelectorAll("[data-wa]").forEach(b => b.addEventListener("click", e => { e.preventDefault(); show("En la página final, este botón abre el WhatsApp de Chimingo con un mensaje listo para reservar."); }));
+  document.querySelectorAll("[data-demo]").forEach(b => b.addEventListener("click", e => { e.preventDefault(); show(b.dataset.demo); }));
+
+  // Horario: marca el día de hoy y dice si está abierto (hora de RD)
+  const now = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Santo_Domingo" }));
+  const horas = { 0: [8, 20.5], 1: [8, 20.5], 2: [0, 0], 3: [8, 20.5], 4: [8, 20.5], 5: [8, 20.5], 6: [8, 20.5] };
+  const d = now.getDay(), h = now.getHours() + now.getMinutes() / 60;
+  document.querySelector(`#hours li[data-d="${d}"]`)?.classList.add("today");
+  const open = h >= horas[d][0] && h < horas[d][1];
+  const badge = document.getElementById("openNow");
+  if (!open) { badge.classList.add("closed"); badge.lastElementChild.textContent = "Cerrado ahora"; }
+  document.getElementById("y").textContent = now.getFullYear();
+
+  // Aparecer al bajar
+  const els = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+    els.forEach(el => io.observe(el));
+  } else els.forEach(el => el.classList.add("in"));
+})();
+</script>
+
+</body>
+</html>
